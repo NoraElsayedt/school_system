@@ -52,7 +52,6 @@ class TeacherRepository implements TeacherRepositoryInterface
       $Teacher->Specialization_id = $request->Specialization_id;
       $Teacher->Joining_Date = $request->Joining_Date;
       $Teacher->Address = $request->Address;
-
       $Teacher->save();
 
 

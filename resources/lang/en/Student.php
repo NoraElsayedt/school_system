@@ -19,5 +19,6 @@ return [
      'parent' => 'parent',
      'academic_year' => 'academic_year',
      'submit' => 'submit',
+     'delete'=>'delete_student',
 
 ];

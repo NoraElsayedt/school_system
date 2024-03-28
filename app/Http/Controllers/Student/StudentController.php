@@ -23,9 +23,6 @@ class StudentController extends Controller
         return $this->Student->getAllStudents();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $Genders = $this->Student->getGenders();
@@ -37,17 +34,12 @@ class StudentController extends Controller
         return view('Student.add', compact('Genders', 'nationals', 'bloods', 'my_classes', 'parents'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(StusentRequest $request)
     {
        return $this->Student->insertStudent($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show( $id)
     {
         $Genders = $this->Student->getGenders();
@@ -67,20 +59,18 @@ class StudentController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Student $student)
+   
+    public function update(Request $request)
     {
-        //
+        return $this->Student->updatestudent($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Student->deletestudent($request);
     }
     public function getClassrooms($gradeId)
     {

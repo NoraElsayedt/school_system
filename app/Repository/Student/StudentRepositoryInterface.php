@@ -16,6 +16,8 @@ interface StudentRepositoryInterface{
     public function insertStudent($request);
     public function getAllStudents();
     public function showStudent($id);
+    public function updatestudent($request);
+    public function deletestudent($request);
     
 
 }

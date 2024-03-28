@@ -82,7 +82,7 @@
                                    <div class="form-group col">
                                        <label for="inputCity">{{trans('Teacher.specialization')}}</label>
                                        <select class="custom-select my-1 mr-sm-2" name="Specialization_id">
-                                           <option value="{{$Teachers->Specialization_id}}">{{$Teachers->specialization->Name}}</option>
+                                           <option value="{{$Teachers->specialization_id}}">{{$Teachers->specialization->Name}}</option>
                                            @foreach($specializations as $specialization)
                                                <option value="{{$specialization->id}}">{{$specialization->Name}}</option>
                                            @endforeach
@@ -94,7 +94,7 @@
                                    <div class="form-group col">
                                        <label for="inputState">{{trans('Teacher.Gender')}}</label>
                                        <select class="custom-select my-1 mr-sm-2" name="Gender_id">
-                                           <option value="{{$Teachers->Gender_id}}">{{$Teachers->gender->Name}}</option>
+                                           <option value="{{$Teachers->gender_id}}">{{$Teachers->gender->Name}}</option>
                                            @foreach($genders as $gender)
                                                <option value="{{$gender->id}}">{{$gender->Name}}</option>
                                            @endforeach

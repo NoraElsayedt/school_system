@@ -39,6 +39,7 @@
 
 
                     <form method="post"  action="{{ route('Student.update','test') }}" autocomplete="off">
+                        {{method_field('patch')}}
                         @csrf
                         <h6 style="font-family: 'Cairo', sans-serif;color: blue">{{trans('Student.personal_information')}}</h6><br>
                             <div class="row">
