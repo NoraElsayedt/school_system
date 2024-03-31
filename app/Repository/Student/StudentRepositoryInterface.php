@@ -7,6 +7,7 @@ interface StudentRepositoryInterface{
 
   
     public function getGenders();
+    public function GetGrades();
     public function getNationalitie();
     public function getbloods();
     public function getmy_classes();
@@ -18,6 +19,10 @@ interface StudentRepositoryInterface{
     public function showStudent($id);
     public function updatestudent($request);
     public function deletestudent($request);
+    public function showAttacment($id);
+    public function uploadImage($request);
+    public function downloadImage($name , $filename);
+    public function deleteImage($request);
     
 
 }

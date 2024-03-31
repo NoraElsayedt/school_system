@@ -52,6 +52,14 @@ return [
             'throw' => false,
         ],
 
+        'studentimage' => [
+            'driver' => 'local',
+            'root' => storage_path('app/student_attachment'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         
 
         's3' => [

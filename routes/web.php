@@ -54,8 +54,9 @@ Route::group(
         Route::get('/get-classrooms/{gradeId}', [StudentController::class,'getClassrooms']);
         Route::get('/sections/{classroomId}',[StudentController::class,'getSectionsByClassroom'])->name('sections.by.classroom');
 
-
-     
+        Route::post('Upload_attachment',[StudentController::class,'Upload_attachment'] )->name('Upload_attachment');
+        Route::get('Download_attachment/{name}/{filename}',[StudentController::class,'Download_attachment'] )->name('Download_attachment');
+     Route::delete('deleteImage',[StudentController::class,'deleteImage'] )->name('deleteImage');
     }
   
 );

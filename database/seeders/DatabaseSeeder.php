@@ -18,17 +18,15 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'nora elsayed',
             'email' => 'noraelsayed01224@gmail.com',
-            'password' =>  Hash::make('12345678'),
+            'password' => Hash::make('12345678'),
         ]);
-  
 
-
-    $this->call([
-        BloodSeeder::class,
-        NationalitieSeeder::class,
-        ReligionSeeder::class,
-        GenderTableSeeder::class,
-        SpecializationsTableSeeder::class
-    ]);
-}
+        $this->call([
+            BloodSeeder::class,
+            NationalitieSeeder::class,
+            ReligionSeeder::class,
+            GenderTableSeeder::class,
+            SpecializationsTableSeeder::class
+        ]);
+    }
 }

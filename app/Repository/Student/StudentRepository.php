@@ -4,21 +4,31 @@ namespace App\Repository\Student;
 
 use App\Models\Blood;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Myparent;
 use App\Models\Classroom;
 use App\Models\Nationalitie;
+use function Ramsey\Uuid\v1;
 use App\Models\Specialization;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
 use SebastianBergmann\Type\Exception;
+use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentRepositoryInterface
 {
   public function getGenders()
   {
     return Gender::all();
+  }
+
+  public function GetGrades()
+  {
+    return Grade::all();
   }
   public function getNationalitie()
   {
@@ -60,7 +70,7 @@ class StudentRepository implements StudentRepositoryInterface
       toastr()->error(trans('Grade.required'));
       return redirect()->back();
     }
-
+    DB::beginTransaction();
 
     try {
 
@@ -85,10 +95,23 @@ class StudentRepository implements StudentRepositoryInterface
       $Student->save();
 
 
+      if ($request->hasFile('photos')) {
+        $photos = $request->file('photos');
+        foreach ($photos as $photo) {
+          $namephoto = $photo->getClientOriginalName();
+          $photo->storeAs($Student->name, $namephoto, 'studentimage');
+          $image_student = new Image();
+          $image_student->filename = $namephoto;
+          $image_student->imageable_type = 'app/Models/Student';
+          $image_student->imageable_id = $Student->id;
+          $image_student->save();
+        }
+      }
+      DB::commit();
       toastr()->success(trans('messages.success'));
-
       return redirect()->route('Student.create');
     } catch (Exception $e) {
+      DB::rollback();
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
   }
@@ -151,12 +174,48 @@ class StudentRepository implements StudentRepositoryInterface
     }
   }
 
-  public function deletestudent($request){
-   Student::findOrFail($request->id)->delete();
+  public function deletestudent($request)
+  {
+    Student::findOrFail($request->id)->delete();
     toastr()->error(trans('messages.Delete'));
 
     return redirect()->route('Student.index');
-
   }
 
+  public function showAttacment($id)
+  {
+
+    return  Student::findOrFail($id);
+  }
+
+  public function uploadImage($request)
+  {
+    if ($request->hasFile('photos')) {
+      $photos = $request->file('photos');
+      foreach ($photos as $photo) {
+        $namephoto = $photo->getClientOriginalName();
+        $photo->storeAs($request->student_name, $namephoto, 'studentimage');
+        $image_student = new Image();
+        $image_student->filename = $namephoto;
+        $image_student->imageable_type = 'app/Models/Student';
+        $image_student->imageable_id = $request->student_id;
+        $image_student->save();
+      }
+    }
+    toastr()->success(trans('messages.success'));
+    return redirect()->back();
+  }
+
+  public function downloadImage($name, $filename)
+  {
+    return Storage::download('student_attachment/' . $name . '/' . $filename);
+  }
+
+  public function deleteImage($request)
+  {
+    Storage::delete('student_attachment/' . $request->student_name . '/' . $request->filename);
+    Image::destroy($request->id);
+    toastr()->error(trans('messages.Delete'));
+    return redirect()->back();
+  }
 }

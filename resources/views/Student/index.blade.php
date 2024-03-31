@@ -74,6 +74,7 @@
                                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{ $Student->id }}"><i
                                                     class="fa fa-trash"></i></button>
+                                                    <a href="{{route('Student.edit',$Student->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
 
 
                                         </td>
