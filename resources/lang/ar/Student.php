@@ -34,7 +34,9 @@ return [
         'Download' => 'تحميل',
         'delete' => 'حذف',
 
-     'Attachments'=> 'اضافه المرفقات'
+     'Attachments'=> 'اضافه المرفقات',
+     'list_students'=>'قائمة الطلاب',
+     'Students_Promotions'=>'ترقية الطلاب',
 
 
 

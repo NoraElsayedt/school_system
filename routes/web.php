@@ -9,6 +9,7 @@ use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Myparent\MyparentController;
+use App\Http\Controllers\Promotion\PromotionController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -22,7 +23,7 @@ Auth::routes();
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','guest']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'guest']
     ],
     function () {
 
@@ -39,27 +40,28 @@ Route::group(
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ],
     function () {
 
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::resource('Grade',GradeController::class);
-        Route::resource('Classroom',ClassroomController::class);
-        Route::POST('/deleteall',[ClassroomController::class ,'deleteall'])->name('deleteall');
-        Route::resource('Sections',SectionController::class);
-        Route::get('classes/{id}',[SectionController::class ,'classes'] );
-        Route::resource('Teacher',TeacherController::class);
+        Route::resource('Grade', GradeController::class);
+        Route::resource('Classroom', ClassroomController::class);
+        Route::POST('/deleteall', [ClassroomController::class, 'deleteall'])->name('deleteall');
+        Route::resource('Sections', SectionController::class);
+        Route::get('classes/{id}', [SectionController::class, 'classes']);
+        Route::resource('Teacher', TeacherController::class);
         Route::resource('Student', StudentController::class);
-        Route::get('/get-classrooms/{gradeId}', [StudentController::class,'getClassrooms']);
-        Route::get('/sections/{classroomId}',[StudentController::class,'getSectionsByClassroom'])->name('sections.by.classroom');
+        Route::get('/get-classrooms/{gradeId}', [StudentController::class, 'getClassrooms']);
+        Route::get('/sections/{classroomId}', [StudentController::class, 'getSectionsByClassroom'])->name('sections.by.classroom');
 
-        Route::post('Upload_attachment',[StudentController::class,'Upload_attachment'] )->name('Upload_attachment');
-        Route::get('Download_attachment/{name}/{filename}',[StudentController::class,'Download_attachment'] )->name('Download_attachment');
-     Route::delete('deleteImage',[StudentController::class,'deleteImage'] )->name('deleteImage');
+        Route::post('Upload_attachment', [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
+        Route::get('Download_attachment/{name}/{filename}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
+        Route::delete('deleteImage', [StudentController::class, 'deleteImage'])->name('deleteImage');
+        Route::resource('Promotion', PromotionController::class);
     }
-  
+
 );
 // ######################### end route dashboard #########################
 
-Route::resource('show_form_wizard',MyparentController::class);
+Route::resource('show_form_wizard', MyparentController::class);

@@ -32,6 +32,8 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
-     'Attachments'=>  'Add Attachments'
+     'Attachments'=>  'Add Attachments',
+     'list_students'=>'list Students',
+     'Students_Promotions'=>'Students Promotions',
 
 ];

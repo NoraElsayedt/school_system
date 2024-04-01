@@ -61,3 +61,111 @@
 
 <script src="{{URL::asset('dashboard/assets/js/table-data.js')}}"></script>
 
+
+
+<script>
+    $(document).ready(function () {
+        $('select[name="Grade_id"]').on('change', function () {
+            var gradeId = $(this).val();
+            if (gradeId) {
+                $.ajax({
+                    url: '/get-classrooms/' + gradeId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        
+                        var options = '<option selected disabled>{{trans('MyParent.Choose')}}...</option>';
+
+                        $.each(data, function (key, value) {
+                            options += '<option value="' + key + '">' + value + '</option>';
+                        });
+                        $('select[name="Classroom_id"]').html(options);
+                    }
+                });
+            } else {
+                $('select[name="Classroom_id"]').empty();
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+        // Event listener for the classroom dropdown
+        $('select[name="Classroom_id"]').on('change', function() {
+            var classroomId = $(this).val();
+            if (classroomId) {
+                $.ajax({
+                    url: '/sections/' + classroomId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var options = '<option selected disabled>{{trans('MyParent.Choose')}}...</option>';
+                        $.each(data, function(key, value) {
+                            options += '<option value="' + key + '">' + value + '</option>';
+                        });
+                        $('select[name="section_id"]').html(options);
+                    }
+                });
+            } else {
+                $('select[name="section_id"]').empty();
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('select[name="Grade_id_new"]').on('change', function () {
+            var gradeId = $(this).val();
+            if (gradeId) {
+                $.ajax({
+                    url: '/get-classrooms/' + gradeId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        
+                        var options = '<option selected disabled>{{trans('MyParent.Choose')}}...</option>';
+
+                        $.each(data, function (key, value) {
+                            options += '<option value="' + key + '">' + value + '</option>';
+                        });
+                        $('select[name="Classroom_id_new"]').html(options);
+                    }
+                });
+            } else {
+                $('select[name="Classroom_id_new"]').empty();
+            }
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+        // Event listener for the classroom dropdown
+        $('select[name="Classroom_id_new"]').on('change', function() {
+            var classroomId = $(this).val();
+            if (classroomId) {
+                $.ajax({
+                    url: '/sections/' + classroomId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var options = '<option selected disabled>{{trans('MyParent.Choose')}}...</option>';
+                        $.each(data, function(key, value) {
+                            options += '<option value="' + key + '">' + value + '</option>';
+                        });
+                        $('select[name="section_id_new"]').html(options);
+                    }
+                });
+            } else {
+                $('select[name="section_id_new"]').empty();
+            }
+        });
+    });
+</script>
