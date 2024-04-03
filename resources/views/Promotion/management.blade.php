@@ -79,6 +79,7 @@
                                             </td>
                                         </tr>
                              @include('Promotion.Delete_all')
+                             @include('Promotion.Delete_one')
                                     @endforeach
                                 </table>
                             </div>

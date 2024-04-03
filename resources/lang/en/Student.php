@@ -35,5 +35,7 @@ return [
      'Attachments'=>  'Add Attachments',
      'list_students'=>'list Students',
      'Students_Promotions'=>'Students Promotions',
+     'add_Graduate'=>'add_Graduate',
+     'list_Graduate'=>'list_Graduate',
 
 ];

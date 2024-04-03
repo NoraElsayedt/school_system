@@ -76,7 +76,9 @@
 							<li><a class="slide-item" href="{{ route('Promotion.index') }}">{{trans('Student.Students_Promotions')}}</a></li>					
 							<li><a class="slide-item" href="{{ route('Promotion.create') }}">							ادارة ترقية الطلاب
 								ادارة ترقية الطلاب
-</a></li>					
+</a></li>			
+<li> <a  class="slide-item" href="{{route('Graduated.create')}}">{{trans('Student.add_Graduate')}}</a> </li>
+<li> <a  class="slide-item" href="{{route('Graduated.index')}}">{{trans('Student.list_Graduate')}}</a> </li>		
 	
 						</ul>
 						</li>

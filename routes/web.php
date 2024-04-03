@@ -2,18 +2,19 @@
 
 
 
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Grade\GradeController;
-use App\Http\Controllers\Classroom\ClassroomController;
-use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Myparent\MyparentController;
-use App\Http\Controllers\Promotion\PromotionController;
-use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
-use App\Models\Classroom;
+use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\Myparent\MyparentController;
+use App\Http\Controllers\Student\GraduatedController;
+use App\Http\Controllers\Classroom\ClassroomController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Promotion\PromotionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -59,6 +60,7 @@ Route::group(
         Route::get('Download_attachment/{name}/{filename}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
         Route::delete('deleteImage', [StudentController::class, 'deleteImage'])->name('deleteImage');
         Route::resource('Promotion', PromotionController::class);
+        Route::resource('Graduated',GraduatedController::class);
     }
 
 );

@@ -70,12 +70,25 @@ class PromotionRepository implements PromotionRepositoryInterface
     DB::beginTransaction();
 
     try {
-// delete by id 
+
       if ($request->page_id != 1) {
-     
-      } 
-      
-      
+
+        $promotion_id = Promotion::findorfail($request->id);
+
+        Student::where('id', $promotion_id->student_id)->update([
+          'grade_id' => $promotion_id->from_grade,
+          'classroom_id' => $promotion_id->from_Classroom,
+          'section_id' => $promotion_id->from_section,
+          'academic_year' => $promotion_id->academic_year
+        ]);
+
+        Promotion::destroy($request->id);
+        DB::commit();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->back();
+      }
+
+
       // delete all 
       else {
         $promotions =  Promotion::all();
@@ -87,18 +100,14 @@ class PromotionRepository implements PromotionRepositoryInterface
             'section_id' => $promotion->from_section,
             'academic_year' => $promotion->academic_year
           ]);
-      
-        Promotion::truncate();
-      
 
-
+          Promotion::truncate();
         }
-      // DB::commit();
-      toastr()->error(trans('messages.Delete'));
-      return redirect()->back();
+        // DB::commit();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->back();
       }
-    } 
-    catch (Exception $e) {
+    } catch (Exception $e) {
       DB::rollback();
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }

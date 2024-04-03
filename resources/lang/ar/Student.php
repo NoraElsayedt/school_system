@@ -37,6 +37,9 @@ return [
      'Attachments'=> 'اضافه المرفقات',
      'list_students'=>'قائمة الطلاب',
      'Students_Promotions'=>'ترقية الطلاب',
+     'add_Graduate'=>'اضافة تخرج جديد',
+    'list_Graduate'=>'قائمة التخرجات',
+
 
 
 
