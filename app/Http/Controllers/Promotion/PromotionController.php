@@ -46,17 +46,17 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Promotion $promotion)
+    public function edit(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Promotion $promotion)
+    public function update(Request $request)
     {
-        //
+       return $this->Promotion->graduated($request);
     }
 
     /**

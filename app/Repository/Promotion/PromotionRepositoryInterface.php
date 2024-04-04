@@ -9,6 +9,6 @@ interface PromotionRepositoryInterface{
     public function store($request);
     public function getPromotion();
     public function deleteAll($request);
-    
+    public function graduated($request);
 
 }

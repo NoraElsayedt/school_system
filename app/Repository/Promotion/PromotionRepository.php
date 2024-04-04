@@ -112,4 +112,14 @@ class PromotionRepository implements PromotionRepositoryInterface
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
   }
+  public function graduated($request){
+    $ID = Promotion::findOrFail($request->id);
+
+   Student::where('id', $ID->student_id)->delete();
+   $ID->delete();
+   toastr()->error(trans('messages.Delete'));
+   return redirect()->back();
+
+        
+  }
 }

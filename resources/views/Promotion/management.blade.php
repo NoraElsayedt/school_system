@@ -76,10 +76,14 @@
                                                 <a href="{{route('Student.edit',$promotion->id)}}"
                                                    class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i
                                                         class="far fa-eye"></i></a>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                        data-target="#delete{{ $promotion->id }}"><i
+                                                            class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                              @include('Promotion.Delete_all')
                              @include('Promotion.Delete_one')
+                             @include('Promotion.delete')
                                     @endforeach
                                 </table>
                             </div>

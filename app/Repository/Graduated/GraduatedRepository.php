@@ -17,7 +17,7 @@ class GraduatedRepository implements GraduatedRepositoryInterface
     }
     public function getAll()
     {
-        return Student::withTrashed()->get();
+        return Student::onlyTrashed()->get();
     }
     public function studentGraduated($request)
     {
@@ -44,4 +44,19 @@ class GraduatedRepository implements GraduatedRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+    public function studentReturn($request){
+        Student::onlyTrashed()
+        ->where('id', $request->id)
+        ->restore();
+        toastr()->success(trans('messages.success'));
+        return redirect()->route('Graduated.index');
+  
+      
+    }
+    public function studentDelete($request){
+        Student::onlyTrashed()->where('id', $request->id)->forceDelete();
+        toastr()->success(trans('messages.success'));
+        return redirect()->route('Graduated.index');
+    }
+   
 }
