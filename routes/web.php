@@ -15,6 +15,7 @@ use App\Http\Controllers\Student\GraduatedController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Fee\FeeController;
+use App\Http\Controllers\Fee_Invoice\FeeInvoiceController;
 use App\Http\Controllers\Promotion\PromotionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -63,6 +64,7 @@ Route::group(
         Route::resource('Promotion', PromotionController::class);
         Route::resource('Graduated',GraduatedController::class);
         Route::resource('Fee',FeeController::class);
+        Route::resource('Fee_Invoice',FeeInvoiceController::class);
     }
 
 );

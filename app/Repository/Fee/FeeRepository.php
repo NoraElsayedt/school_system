@@ -32,6 +32,7 @@ class FeeRepository implements FeeRepositoryInterface
           $fee->classroom_id= $request->Classroom_id;
           $fee->description = $request->description;
           $fee->year = $request->year;
+          $fee->Fee_type =$request->Fee_type;
           $fee->save();
           toastr()->success(trans('messages.success'));
           return redirect()->route('Fee.index');
@@ -54,6 +55,7 @@ class FeeRepository implements FeeRepositoryInterface
           $fee->classroom_id= $request->Classroom_id;
           $fee->description = $request->description;
           $fee->year = $request->year;
+          $fee->Fee_type =$request->Fee_type;
           $fee->save();
           toastr()->success(trans('messages.Update'));
           return redirect()->route('Fee.index');

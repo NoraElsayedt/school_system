@@ -69,12 +69,22 @@
                                             <span>{{ $Student->Joining_Date }}</span></td>
                                         <td>{{ $Student->section->name_section }}</td>
                                         <td>
-                                            <a href="{{ route('Student.show', $Student->id) }}" class="btn btn-info btn-sm"
-                                                role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#delete{{ $Student->id }}"><i
-                                                    class="fa fa-trash"></i></button>
-                                                    <a href="{{route('Student.edit',$Student->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="far fa-eye"></i></a>
+
+                                            <div class="dropdown show">
+                                                <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    العمليات
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item" href="{{route('Student.show',$Student->id)}}"><i style="color: #ffc107" class="far fa-eye "></i>&nbsp;  عرض بيانات الطالب</a>
+                                                  
+                                                  <a class="dropdown-item" href="{{route('Student.edit',$Student->id)}}"><i style="color:green" class="fa fa-edit"></i>&nbsp;  تعديل بيانات الطالب</a>
+                                                  <a class="dropdown-item" href="{{route('Fee_Invoice.show',$Student->id)}}"><i style="color: #0000cc" class="fa fa-edit"></i>&nbsp;اضافة فاتورة رسوم&nbsp;</a>
+  
+                                                  <a class="dropdown-item" data-target="#delete{{ $Student->id }}" data-toggle="modal" href="##Delete_Student{{ $Student->id }}"><i style="color: red" class="fa fa-trash"></i>&nbsp;  حذف بيانات الطالب</a>
+                                                </div>
+                                            </div>
+
+
 
 
                                         </td>

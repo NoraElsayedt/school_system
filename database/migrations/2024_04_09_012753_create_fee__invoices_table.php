@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fees', function (Blueprint $table) {
+        Schema::create('fee__invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
+            $table->date('invoice_date');
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('grade_id')->constrained();
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('fee_id')->constrained();
             $table->decimal('amount',8,2);
-            $table->foreignId('grade_id')->constrained()->onDelete('cascade');
-            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->string('description')->nullable();
-            $table->integer('Fee_type');
-            $table->string('year');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fees');
+        Schema::dropIfExists('fee__invoices');
     }
 };
