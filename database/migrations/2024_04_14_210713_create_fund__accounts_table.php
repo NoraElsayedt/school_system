@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student__accounts', function (Blueprint $table) {
+        Schema::create('fund__accounts', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('type');
-            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreignId('fee_invoice_id')->nullable()->references('id')->on('fee__invoices')->onDelete('cascade');
+      
             $table->foreignId('receipt_student_id')->nullable()->references('id')->on('receipt__students')->onDelete('cascade');
-            $table->foreignId('processing_id')->nullable()->references('id')->on('processings')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable()->references('id')->on('payments')->onDelete('cascade');
+
             $table->decimal('debit',8,2)->nullable();
             $table->decimal('credit',8,2)->nullable();
             $table->string('description')->nullable();
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student__accounts');
+        Schema::dropIfExists('fund__accounts');
     }
 };

@@ -1,65 +1,75 @@
 <?php
 
-namespace App\Repository\Processings;
+namespace App\Repository\Payment;
 
-use App\Models\Processing;
-use App\Models\Student;
+use App\Models\Payment;
 use App\Models\Student_Account;
+use App\Models\Student;
+use App\Models\Fund_Account;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Type\Exception;
-use App\Repository\Processings\ProcessingRepositoryInterface;
+use App\Repository\Payment\PaymentRepositoryInterface;
 
-use function Ramsey\Uuid\v1;
 
-class ProcessingRepository implements ProcessingRepositoryInterface
+
+class PaymentRepository implements PaymentRepositoryInterface
 {
+
     public function index()
     {
-        $ProcessingFees = Processing::all();
-        return view('Processings.index', compact('ProcessingFees'));
+      $payment_students =  Payment::all();
+      return view('Payment.index',compact('payment_students'));
     }
 
     public function show($id)
     {
         $student = Student::findOrFail($id);
-        return view('Processings.add', compact('student'));
+        return view('Payment.add', compact('student'));
     }
     public function edit($id)
     {
-        $ProcessingFee = Processing::findOrFail($id);
-        return view('Processings.edit', compact('ProcessingFee'));
+        $payment_student = Payment::findOrFail($id);
+        return view('Payment.edit', compact('payment_student'));
+        
     }
-
     public function store($request)
     {
+      
         DB::beginTransaction();
 
         try {
 
             $student = Student::findOrFail($request->student_id);
-            $processing =  Processing::create([
+            $Payment =  Payment::create([
                 'date' => date('Y-m-d'),
                 'amount' => $request->Debit,
                 'student_id' => $request->student_id,
                 'description' => $request->description
             ]);
+            Fund_Account::create([
+                'date' => date('Y-m-d'),
+                'debit' =>  0.00, 
+                'payment_id' => $Payment->id,
+                'description' => $request->description,
+                'credit' =>$request->Debit
+              ]);
 
             Student_Account::create([
                 'date' => date('Y-m-d'),
-                'type' => 'ProcessingFee',
+                'type' => 'Payment',
                 'student_id' => $request->student_id,
                 'grade_id' => $student->grade_id,
                 'classroom_id' => $student->classroom_id,
-                'debit' => 0.00,
-                'processing_id' => $processing->id,
+                'debit' =>  $request->Debit,
+                'payment_id' => $Payment->id,
                 'description' => $request->description,
-                'credit' => $request->Debit,
+                'credit' =>0.00,
             ]);
 
 
             DB::commit();
             toastr()->success(trans('messages.success'));
-            return redirect()->route('Processing.index');
+            return redirect()->route('Payment.index');
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -67,37 +77,43 @@ class ProcessingRepository implements ProcessingRepositoryInterface
     }
     public function update($request)
     {
-
         DB::beginTransaction();
 
         try {
 
             $student = Student::findOrFail($request->student_id);
-            $processing = Processing::findOrFail($request->id);
+            $Payment = Payment::findOrFail($request->id);
 
-            $processing->update([
+          $Payment->update([
                 'date' => date('Y-m-d'),
                 'amount' => $request->Debit,
                 'student_id' => $request->student_id,
                 'description' => $request->description
             ]);
-
-            Student_Account::where('processing_id', $request->id)->update([
+            Fund_Account::where('payment_id', $request->id)->update([
                 'date' => date('Y-m-d'),
-                'type' => 'ProcessingFee',
+                'debit' =>  0.00, 
+                'payment_id' => $Payment->id,
+                'description' => $request->description,
+                'credit' =>$request->Debit
+              ]);
+
+            Student_Account::where('payment_id', $request->id)->update([
+                'date' => date('Y-m-d'),
+                'type' => 'Payment',
                 'student_id' => $request->student_id,
                 'grade_id' => $student->grade_id,
                 'classroom_id' => $student->classroom_id,
-                'debit' => 0.00,
-                'processing_id' => $processing->id,
+                'debit' =>  $request->Debit,
+                'payment_id' => $Payment->id,
                 'description' => $request->description,
-                'credit' => $request->Debit,
+                'credit' =>0.00,
             ]);
 
 
             DB::commit();
             toastr()->success(trans('messages.Update'));
-            return redirect()->route('Processing.index');
+            return redirect()->route('Payment.index');
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -105,9 +121,9 @@ class ProcessingRepository implements ProcessingRepositoryInterface
     }
     public function destroy($request)
     {
-        Processing::destroy($request->id);
+        Payment::destroy($request->id);
 
         toastr()->success(trans('messages.Delete'));
-        return redirect()->route('Processing.index');
+        return redirect()->route('Payment.index');
     }
 }

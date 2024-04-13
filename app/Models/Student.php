@@ -55,4 +55,5 @@ class Student extends Model
     public function student_account(){
         return $this->hasMany(Student_Account::class ,'student_id');
     }
+    
 }

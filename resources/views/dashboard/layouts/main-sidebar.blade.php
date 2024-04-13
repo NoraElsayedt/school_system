@@ -100,7 +100,8 @@
 							<li><a class="slide-item" href="{{ route('Receipt_Student.index') }}">سند قبض
 							</a></li>
 							<li><a class="slide-item" href="{{route('Processing.index')}}">استبعاد رسوم</a></li>
-					
+							<li><a class="slide-item" href="{{route('Payment.index')}}"> سند صرف</a></li>
+
 						</ul>
 					</li>
 					
