@@ -15,22 +15,14 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->string('type');
-            // $table->foreignId('student_id')->constrained('students');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
-
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-
-            // $table->foreignId('grade_id')->constrained();
-            // $table->foreignId('classroom_id')->constrained();
-          
             $table->foreignId('fee_invoice_id')->nullable()->references('id')->on('fee__invoices')->onDelete('cascade');
             $table->foreignId('receipt_student_id')->nullable()->references('id')->on('receipt__students')->onDelete('cascade');
-
+            $table->foreignId('processing_id')->nullable()->references('id')->on('processings')->onDelete('cascade');
             $table->decimal('debit',8,2)->nullable();
             $table->decimal('credit',8,2)->nullable();
-
             $table->string('description')->nullable();
             $table->timestamps();
         });

@@ -14,6 +14,8 @@ use App\Repository\Promotion\PromotionRepository;
 use App\Repository\Student\StudentRepositoryInterface;
 use App\Repository\Teacher\TeacherRepositoryInterface;
 use App\Repository\Graduated\GraduatedRepositoryInterface;
+use App\Repository\Processings\ProcessingRepository;
+use App\Repository\Processings\ProcessingRepositoryInterface;
 use App\Repository\Promotion\PromotionRepositoryInterface;
 
 use App\Repository\Receipt_Student\Receipt_StudentRepository;
@@ -33,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(FeeRepositoryInterface::class, FeeRepository::class);
         $this->app->bind(Fee_InvoiceRepositoryInterface::class, Fee_InvoiceRepository::class);
         $this->app->bind(Receipt_StudentRepositoryInterface::class, Receipt_StudentRepository::class);
+        $this->app->bind(ProcessingRepositoryInterface::class, ProcessingRepository::class);
+
 
 
         

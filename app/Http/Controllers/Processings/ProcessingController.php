@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Receipt_Student;
+namespace App\Http\Controllers\Processings;
 
+use App\Models\Processing;
 use Illuminate\Http\Request;
-use App\Models\Receipt_Student;
 use App\Http\Controllers\Controller;
+use App\Repository\Processings\ProcessingRepositoryInterface;
+use Laravel\Ui\Presets\React;
 
-use App\Repository\Receipt_Student\Receipt_StudentRepositoryInterface;
-
-
-class ReceiptStudentController extends Controller
+class ProcessingController extends Controller
 {
-    public $Receipt_Student;
-
-    public function __construct(Receipt_StudentRepositoryInterface $Receipt_Student)
+    public $processing ;
+    public function __construct(ProcessingRepositoryInterface $processing)
     {
-        $this->Receipt_Student = $Receipt_Student;
+        $this->processing = $processing;
     }
     public function index()
     {
-        return $this->Receipt_Student->index();
+        return $this->processing->index();
     }
 
     /**
@@ -35,23 +33,24 @@ class ReceiptStudentController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->Receipt_Student->store($request);
+        return $this->processing->store($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function edit($id)
+    public function show($id)
     {
-      return $this->Receipt_Student->edit($id);
+        return $this->processing->show($id);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function show($id)
+    public function edit($id)
     {
-        return $this->Receipt_Student->show($id);
+        return $this->processing->edit($id);
     }
 
     /**
@@ -59,7 +58,7 @@ class ReceiptStudentController extends Controller
      */
     public function update(Request $request)
     {
-        return $this->Receipt_Student->update($request);
+        return $this->processing->update($request);
     }
 
     /**
@@ -67,6 +66,6 @@ class ReceiptStudentController extends Controller
      */
     public function destroy(Request $request)
     {
-        return $this->Receipt_Student->destroy($request);
+        return $this->processing->destroy($request);
     }
 }
