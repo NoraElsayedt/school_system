@@ -38,7 +38,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="repeater">
-                                <div data-repeater-list="List_Fees">
+                                <div data-repeater-list="List_Fees[]">
                                     <div data-repeater-item>
                                         <div class="row">
 

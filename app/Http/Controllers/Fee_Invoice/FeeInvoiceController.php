@@ -18,7 +18,7 @@ class FeeInvoiceController extends Controller
 
     public function index()
     {
-     
+     return $this->invoice->index();
     }
 
     /**
@@ -48,24 +48,24 @@ class FeeInvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fee_Invoice $fee_Invoice)
+    public function edit($id)
     {
-        //
+       return $this->invoice->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fee_Invoice $fee_Invoice)
+    public function update(Request $request)
     {
-        //
+       return $this->invoice->update($request);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fee_Invoice $fee_Invoice)
+    public function destroy(Request $request)
     {
-        //
+        return $this->invoice->delete($request);
     }
 }

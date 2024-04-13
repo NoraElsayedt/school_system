@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student__accounts', function (Blueprint $table) {
+        Schema::create('receipt__students', function (Blueprint $table) {
             $table->id();
-         
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('grade_id')->constrained();
-            $table->foreignId('classroom_id')->constrained();
+            
+           
+            $table->date('date');
+      
+            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
           
             $table->decimal('debit',8,2)->nullable();
-            $table->decimal('credit',8,2)->nullable();
-
+          
             $table->string('description')->nullable();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student__accounts');
+        Schema::dropIfExists('receipt__students');
     }
 };

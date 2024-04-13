@@ -26,7 +26,10 @@ class DatabaseSeeder extends Seeder
             NationalitieSeeder::class,
             ReligionSeeder::class,
             GenderTableSeeder::class,
-            SpecializationsTableSeeder::class
+            SpecializationsTableSeeder::class,
+            GradeSeeder::class,
+            ClassroomTableSeeder::class,
+            SectionsTableSeeder::class
         ]);
     }
 }
