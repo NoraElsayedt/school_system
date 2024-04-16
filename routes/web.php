@@ -1,7 +1,6 @@
 <?php
 
-
-
+use App\Http\Controllers\Attendance\AttendanceController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +20,7 @@ use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Processings\ProcessingController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Receipt_Student\ReceiptStudentController;
-
-
+use App\Http\Controllers\Subjects\SubjectsController;
 
 Auth::routes();
 // ######################### route login #########################
@@ -71,6 +69,8 @@ Route::group(
         Route::resource('Receipt_Student',ReceiptStudentController::class);
         Route::resource('Processing', ProcessingController::class);
         Route::resource('Payment',PaymentController::class);
+        Route::resource('Attendance',AttendanceController::class);
+        Route::resource('Subjects',SubjectsController::class);
 
     }
 

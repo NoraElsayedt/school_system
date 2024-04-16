@@ -23,4 +23,5 @@ return [
   'exists'=>'الصف موجودة مسبقا',
   'delete_checkbox'=> 'حذف الصفوف المختارة',
   'Search_By_Grade'=> 'بحث باسم المرحلة',
+  'Warning_Grade'=>'delete',
 ];

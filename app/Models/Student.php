@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -54,6 +55,10 @@ class Student extends Model
     // }
     public function student_account(){
         return $this->hasMany(Student_Account::class ,'student_id');
+    }
+
+    public function Attendance(){
+        return $this->hasMany(Attendance::class ,'student_id');
     }
     
 }
