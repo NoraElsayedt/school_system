@@ -1,26 +1,27 @@
 <?php
 
-use App\Http\Controllers\Attendance\AttendanceController;
 use App\Models\Classroom;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Fee\FeeController;
+use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Grade\GradeController;
+use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Myparent\MyparentController;
 use App\Http\Controllers\Student\GraduatedController;
+use App\Http\Controllers\Subjects\SubjectsController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Promotion\PromotionController;
+use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Fee_Invoice\FeeInvoiceController;
-use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Processings\ProcessingController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Receipt_Student\ReceiptStudentController;
-use App\Http\Controllers\Subjects\SubjectsController;
 
 Auth::routes();
 // ######################### route login #########################
@@ -71,6 +72,7 @@ Route::group(
         Route::resource('Payment',PaymentController::class);
         Route::resource('Attendance',AttendanceController::class);
         Route::resource('Subjects',SubjectsController::class);
+        Route::resource('Exam', ExamController::class);
 
     }
 

@@ -5,12 +5,14 @@ namespace App\Providers;
 use App\Models\Payment;
 use App\Models\Subjects;
 use App\Repository\Fee\FeeRepository;
+use App\Repository\Exam\ExamRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\Payment\PaymentRepository;
 use App\Repository\Student\StudentRepository;
 use App\Repository\Teacher\TeacherRepository;
 use App\Repository\Fee\FeeRepositoryInterface;
 use App\Repository\Subjects\SubjectsRepository;
+use App\Repository\Exam\ExamRepositoryInterface;
 use App\Repository\Graduated\GraduatedRepository;
 use App\Repository\Promotion\PromotionRepository;
 use App\Repository\Attendance\AttendanceRepository;
@@ -18,9 +20,9 @@ use App\Repository\Processings\ProcessingRepository;
 use App\Repository\Fee_Invoice\Fee_InvoiceRepository;
 use App\Repository\Payment\PaymentRepositoryInterface;
 use App\Repository\Student\StudentRepositoryInterface;
+
 use App\Repository\Teacher\TeacherRepositoryInterface;
 use App\Repository\Subjects\SubjectsRepositoryInterface;
-
 use App\Repository\Graduated\GraduatedRepositoryInterface;
 use App\Repository\Promotion\PromotionRepositoryInterface;
 use App\Repository\Attendance\AttendanceRepositoryInterface;
@@ -47,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
         $this->app->bind(SubjectsRepositoryInterface::class, SubjectsRepository::class);
+        $this->app->bind(ExamRepositoryInterface::class, ExamRepository::class);
 
 
     
