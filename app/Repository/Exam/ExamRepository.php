@@ -25,10 +25,7 @@ class ExamRepository implements ExamRepositoryInterface
         return view('Exam.create');
     }
 
-    public function show($id)
-    {
-      
-    }
+   
     public function edit($id)
     {
         $exam = Exam::findOrFail($id);

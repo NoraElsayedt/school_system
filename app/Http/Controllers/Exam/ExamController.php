@@ -33,7 +33,7 @@ class ExamController extends Controller
   
     public function show($id)
     {
-        return $this->Exam->show($id);
+      
     }
 
    
