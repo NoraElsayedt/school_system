@@ -20,6 +20,7 @@ use App\Http\Controllers\Promotion\PromotionController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Fee_Invoice\FeeInvoiceController;
 use App\Http\Controllers\Processings\ProcessingController;
+use App\Http\Controllers\Question\QuestionController;
 use App\Http\Controllers\Quizze\QuizzeController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Receipt_Student\ReceiptStudentController;
@@ -75,6 +76,7 @@ Route::group(
         Route::resource('Subjects',SubjectsController::class);
         Route::resource('Exam', ExamController::class);
         Route::resource('Quizze',QuizzeController::class);
+        Route::resource('Question',QuestionController::class);
 
     }
 

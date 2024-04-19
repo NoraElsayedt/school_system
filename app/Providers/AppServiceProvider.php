@@ -12,6 +12,7 @@ use App\Repository\Payment\PaymentRepository;
 use App\Repository\Student\StudentRepository;
 use App\Repository\Teacher\TeacherRepository;
 use App\Repository\Fee\FeeRepositoryInterface;
+use App\Repository\Question\QuestionRepository;
 use App\Repository\Subjects\SubjectsRepository;
 use App\Repository\Exam\ExamRepositoryInterface;
 use App\Repository\Graduated\GraduatedRepository;
@@ -19,11 +20,12 @@ use App\Repository\Promotion\PromotionRepository;
 use App\Repository\Attendance\AttendanceRepository;
 use App\Repository\Processings\ProcessingRepository;
 use App\Repository\Quizze\QuizzeRepositoryInterface;
-use App\Repository\Fee_Invoice\Fee_InvoiceRepository;
 
+use App\Repository\Fee_Invoice\Fee_InvoiceRepository;
 use App\Repository\Payment\PaymentRepositoryInterface;
 use App\Repository\Student\StudentRepositoryInterface;
 use App\Repository\Teacher\TeacherRepositoryInterface;
+use App\Repository\Question\QuestionRepositoryInterface;
 use App\Repository\Subjects\SubjectsRepositoryInterface;
 use App\Repository\Graduated\GraduatedRepositoryInterface;
 use App\Repository\Promotion\PromotionRepositoryInterface;
@@ -53,6 +55,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SubjectsRepositoryInterface::class, SubjectsRepository::class);
         $this->app->bind(ExamRepositoryInterface::class, ExamRepository::class);
         $this->app->bind(QuizzeRepositoryInterface::class, QuizzeRepository::class);
+        $this->app->bind(QuestionRepositoryInterface::class, QuestionRepository::class);
+
 
 
     
