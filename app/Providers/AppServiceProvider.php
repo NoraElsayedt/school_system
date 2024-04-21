@@ -34,6 +34,8 @@ use App\Repository\Processings\ProcessingRepositoryInterface;
 use App\Repository\Receipt_Student\Receipt_StudentRepository;
 use App\Repository\Fee_Invoice\Fee_InvoiceRepositoryInterface;
 use App\Repository\Receipt_Student\Receipt_StudentRepositoryInterface;
+use App\Repository\Online_Classe\Online_ClasseRepository;
+use App\Repository\Online_Classe\Online_ClasseRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,6 +58,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ExamRepositoryInterface::class, ExamRepository::class);
         $this->app->bind(QuizzeRepositoryInterface::class, QuizzeRepository::class);
         $this->app->bind(QuestionRepositoryInterface::class, QuestionRepository::class);
+        $this->app->bind(Online_ClasseRepositoryInterface::class, Online_ClasseRepository::class);
+
 
 
 
