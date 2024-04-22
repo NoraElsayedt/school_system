@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             SpecializationsTableSeeder::class,
             GradeSeeder::class,
             ClassroomTableSeeder::class,
-            SectionsTableSeeder::class
+            SectionsTableSeeder::class,
+            SettingSeeder::class
         ]);
     }
 }

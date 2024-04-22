@@ -46,7 +46,7 @@ return [
 
         'parent_attachment' => [
             'driver' => 'local',
-            'root' => storage_path('app/parent_attachment'),
+            'root' => public_path('app/parent_attachment'),
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
             'throw' => false,
@@ -54,12 +54,18 @@ return [
 
         'studentimage' => [
             'driver' => 'local',
-            'root' => storage_path('app/student_attachment'),
+            'root' => public_path('app/student_attachment'),
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
             'throw' => false,
         ],
-
+        'Library' => [
+            'driver' => 'local',
+            'root' => public_path('app/Library'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         
 
         's3' => [

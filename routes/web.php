@@ -8,12 +8,14 @@ use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Quizze\QuizzeController;
+use App\Http\Controllers\Library\LibraryController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Myparent\MyparentController;
 use App\Http\Controllers\Question\QuestionController;
+use App\Http\Controllers\Settings\SettingController;
 use App\Http\Controllers\Student\GraduatedController;
 use App\Http\Controllers\Subjects\SubjectsController;
 use App\Http\Controllers\Classroom\ClassroomController;
@@ -79,7 +81,9 @@ Route::group(
         Route::resource('Quizze',QuizzeController::class);
         Route::resource('Question',QuestionController::class);
         Route::resource('Online_Classe',OnlineClasseController::class);
-
+        Route::resource('Library',LibraryController::class);
+        Route::get('downloadAttachment/{id}',[LibraryController::class,'downloadAttachment'])->name('downloadAttachment');
+        Route::resource('Settings',SettingController::class);
     }
 
 );
