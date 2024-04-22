@@ -14,20 +14,27 @@
 						</div>
 					</div>
 				</div>
+
 				<!-- The content half -->
 				<div class="col-md-6 col-lg-6 col-xl-5 bg-white">
 					<div class="login d-flex align-items-center py-2">
 						<!-- Demo content-->
 						<div class="container p-0">
 							<div class="row">
-								<div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
-									<div class="card-sigin">
-										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('dashboard/assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">{{ trans('login.SCHOOL') }}</h1></div>
-										<div class="card-sigin">
-											<div class="main-signup-header">
-												<h2>{{ trans('login.Welcome') }}</h2>
-												<h5 class="font-weight-semibold mb-4">{{ trans('login.Please') }}</h5>
-												
+								<div class="col-md-6 col-lg-6 col-xl-5 bg-white">
+                    <div class="login-fancy pb-40 clearfix">
+                        @if($type == 'student')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول طالب</h3>
+                        @elseif($type == 'parent')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ولي امر</h3>
+                        @elseif($type == 'teacher')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول معلم</h3>
+                        @else
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ادمن</h3>
+                        @endif
+                      
+                
+
 
                                                 <form method="POST" action="{{ route('login') }}">
                                                     @csrf
@@ -69,7 +76,8 @@
                                                         {{ trans('login.submit') }} 
                                                     </button>
                                                 </form>
-												
+                                            </div>
+                                        </div>
 											</div>
 										</div>
 									</div>

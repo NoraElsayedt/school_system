@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Fee\FeeController;
 use App\Http\Controllers\Exam\ExamController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Grade\GradeController;
 use App\Http\Controllers\Quizze\QuizzeController;
 use App\Http\Controllers\Library\LibraryController;
@@ -13,9 +14,9 @@ use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\Settings\SettingController;
 use App\Http\Controllers\Myparent\MyparentController;
 use App\Http\Controllers\Question\QuestionController;
-use App\Http\Controllers\Settings\SettingController;
 use App\Http\Controllers\Student\GraduatedController;
 use App\Http\Controllers\Subjects\SubjectsController;
 use App\Http\Controllers\Classroom\ClassroomController;
@@ -28,24 +29,33 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Online_Classe\OnlineClasseController;
 use App\Http\Controllers\Receipt_Student\ReceiptStudentController;
 
-Auth::routes();
+// Auth::routes();
 // ######################### route login #########################
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'guest']
-    ],
-    function () {
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'guest']
+//     ],
+//     function () {
 
-        Route::get('/', function () {
-            return view('auth.login');
-        });
-    }
-);
+//         Route::get('/', function () {
+//             return view('auth.login');
+//         });
+//     }
+// );
 
 // ######################### end route login #########################
 
+Route::get('/', [HomeController::class, 'index'])->name('selection');
 
+Route::group(['namespace' => 'Auth'], function () {
+
+    Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
+    
+    Route::post('/login',[LoginController::class,'login'])->name('login');
+    
+    
+    });
 // ######################### route dashboard #########################
 Route::group(
     [
