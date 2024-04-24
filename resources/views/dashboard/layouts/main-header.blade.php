@@ -252,7 +252,7 @@
 										<div class="d-flex wd-100p">
 											<div class="main-img-user"><img alt="" src="{{URL::asset('dashboard/assets/img/faces/6.jpg')}}" class=""></div>
 											<div class="mr-3 my-auto">
-												<h4>{{auth()->user()->name}}</h4><span>{{auth()->user()->email}}</span>
+												{{-- <h4>{{auth()->user()->name}}</h4><span>{{auth()->user()->email}}</span> --}}
 											</div>
 										</div>
 									</div>
@@ -264,12 +264,19 @@
 								
 									
 								
-									<a class="dropdown-item" href="{{ route('logout') }}"
-									onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-										class="bx bx-log-out"></i> {{ trans('main-sidebar_trans.Out') }}</a>
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-									@csrf
-								</form>
+									@if(auth('student')->check())
+									<form method="GET" action="{{ route('logout','student') }}">
+										@elseif(auth('teacher')->check())
+											<form method="GET" action="{{ route('logout','teacher') }}">
+												@elseif(auth('parent')->check())
+													<form method="GET" action="{{ route('logout','parent') }}">
+														@else
+															<form method="GET" action="{{ route('logout','web') }}">
+																@endif
+				
+																@csrf
+																<a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>تسجيل الخروج</a>
+															</form>
 								
 								
 								</div>

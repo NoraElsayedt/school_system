@@ -17,10 +17,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
-    public const STUDENT = '/dashboard';
-    public const TEACHER = '/dashboard';
-    public const PARENT = '/dashboard';
+    public const HOME ='/dashboard/admin';
+    public const STUDENT ='/student/dashboard';
+    public const TEACHER ='/teacher/dashboard';
+    public const PARENT = '/parent/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -36,8 +36,20 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            // route admin 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            // route student  
+            Route::middleware('web')
+                ->group(base_path('routes/Student.php'));
+
+            // route teacher  
+            Route::middleware('web')
+                ->group(base_path('routes/Teacher.php'));
+                         // route parent   
+            Route::middleware('web')
+            ->group(base_path('routes/Parent.php'));
         });
     }
 }

@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
     
     Route::post('/login',[LoginController::class,'login'])->name('login');
+    Route::get('/logout/{type}', [LoginController::class,'logout'])->name('logout');
     
     
     });
@@ -60,11 +61,11 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard/admin', [HomeController::class,'dashboard'])->name('dashboard.admin');
         Route::resource('Grade', GradeController::class);
         Route::resource('Classroom', ClassroomController::class);
         Route::POST('/deleteall', [ClassroomController::class, 'deleteall'])->name('deleteall');
@@ -97,6 +98,7 @@ Route::group(
     }
 
 );
+
 // ######################### end route dashboard #########################
 
 Route::resource('show_form_wizard', MyparentController::class);

@@ -47,11 +47,11 @@ class TeacherRepository implements TeacherRepositoryInterface
         'ar' => $request->Name_ar
       ];
       $Teacher->Gender_id = $request->Gender_id;
-      $Teacher->Email = $request->Email;
-      $Teacher->Password = Hash::make($request->Password);
+      $Teacher->email = $request->Email;
+      $Teacher->password = Hash::make($request->Password);
       $Teacher->Specialization_id = $request->Specialization_id;
       $Teacher->Joining_Date = $request->Joining_Date;
-      $Teacher->Address = $request->Address;
+      $Teacher->address = $request->Address;
       $Teacher->save();
 
 
