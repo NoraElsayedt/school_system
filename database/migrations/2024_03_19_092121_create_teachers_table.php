@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('name');
+            $table->string('Name');
             $table->foreignId('specialization_id')->constrained();
             $table->foreignId('gender_id')->constrained();
             $table->date('Joining_Date');
