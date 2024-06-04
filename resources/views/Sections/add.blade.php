@@ -43,7 +43,7 @@
                 </div>
                   <br>
 
-             
+
 
 
                   <div class="col">
@@ -52,7 +52,7 @@
                         <option value="" selected disabled>{{ trans('Sections.Select_class') }}</option>
                     </select>
                 </div>
-                
+
                 <div class="col">
                     <label for="inputName" class="control-label">{{ trans('Teacher.Name_Teacher') }}</label>
                     <select multiple name="Teacher_id[]" class="custom-select" >
@@ -64,7 +64,7 @@
                     </select>
                 </div>
                   <br>
-                 
+
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary"

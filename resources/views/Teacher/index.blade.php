@@ -14,7 +14,7 @@
 							<h4 class="content-title mb-0 my-auto">{{ trans('main-sidebar_trans.Teachers') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('main-sidebar_trans.List_Teachers') }}</span>
 						</div>
 					</div>
-				
+
 				</div>
 				<!-- breadcrumb -->
 @endsection
@@ -23,9 +23,9 @@
 
     <div class="col-xl-12">
         <div class="card">
- 
+
             <div class="card-body">
-                
+
 
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -39,29 +39,29 @@
 
         <a href="{{route('Teacher.create')}}" class="btn btn-success " role="button"
         aria-pressed="true">   {{ trans('Teacher.Add_Teacher') }}</a><br><br>
-              
+
                 <br><br>
 
                 <div class="table-responsive">
                     <table class="table text-md-nowrap" id="example1">
                         <thead>
                             <tr>
-                                
+
                                 <th class="wd-15p border-bottom-0">{{ trans('Grade.id') }}</th>
                                 <th class="wd-20p border-bottom-0">{{ trans('Teacher.Name_Teacher') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ trans('Teacher.Gender') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ trans('Teacher.Joining_Date') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ trans('Teacher.specialization') }}</th>
                                 <th class="wd-10p border-bottom-0">{{ trans('Grade.operation') }}</th>
-                             
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($teacher as $teachers)
-                                
-                       
+
+
                             <tr>
-                                
+
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$teachers->Name}}</td>
                                 <td>{{$teachers->Gender->Name}}</td>
@@ -76,7 +76,7 @@
 
 
                                 </td>
-                                
+
                             </tr>
 
 
